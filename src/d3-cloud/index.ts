@@ -13,7 +13,7 @@ var cloudRadians = Math.PI / 180,
   cw = (1 << 11) >> 5,
   ch = 1 << 11;
 
-module.exports = function() {
+export default function() {
   var size = [256, 256],
     text = cloudText,
     font = cloudFont,
@@ -238,7 +238,7 @@ module.exports = function() {
   };
 
   return cloud;
-};
+}
 
 function cloudText(d) {
   return d.text;
