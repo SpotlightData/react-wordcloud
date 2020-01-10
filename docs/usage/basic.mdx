@@ -7,6 +7,7 @@ menu: Usage
 import { Playground } from 'docz';
 
 import ReactWordcloud from '../ReactWordcloud';
+import {defaultOptions } from '../../src';
 import words from './words';
 
 # Basic Example
@@ -14,5 +15,5 @@ import words from './words';
 Simply provide an array of words with valid `text` and `value` fields to begin!
 
 <Playground>
-  <ReactWordcloud words={words} />
+  <ReactWordcloud words={words} options={{...defaultOptions, rotations: -1 }}  />
 </Playground>
