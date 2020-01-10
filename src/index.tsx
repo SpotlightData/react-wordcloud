@@ -59,6 +59,10 @@ export interface Props {
    * An array of word.  A word is an object that must contain the 'text' and 'value' keys.
    */
   words: types.Word[];
+  /**
+   * How long should we wait before a re-render
+   */
+  wait?: number;
 }
 
 export default function Wordcloud({
@@ -68,6 +72,7 @@ export default function Wordcloud({
   options,
   size: initialSize,
   words,
+  wait = 100,
 }: Props): JSX.Element {
   const mergedCallbacks = { ...defaultCallbacks, ...callbacks };
   const mergedOptions = { ...defaultOptions, ...options };
@@ -107,7 +112,6 @@ export default function Wordcloud({
           .padding(padding)
           .words(sortedWords)
           .rotate(() => {
-            console.log(rotations);
             if (rotations === undefined) {
               // default rotation algorithm
               return (~~(random() * 6) - 3) * 30;
@@ -169,7 +173,7 @@ export default function Wordcloud({
           layout.stop();
         };
       },
-      500,
+      wait,
     ),
   );
 
